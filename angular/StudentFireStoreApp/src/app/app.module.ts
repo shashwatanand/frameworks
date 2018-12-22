@@ -7,12 +7,14 @@ import { AppComponent } from './app.component';
 import { environment } from 'src/environments/environment';
 import { StudentsComponent } from './students/students.component';
 import { StudentComponent } from './students/student/student.component';
+import { StudentListComponent } from './students/student-list/student-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     StudentsComponent,
-    StudentComponent
+    StudentComponent,
+    StudentListComponent
   ],
   imports: [
     BrowserModule,
