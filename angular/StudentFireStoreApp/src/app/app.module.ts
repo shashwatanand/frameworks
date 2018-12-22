@@ -5,10 +5,12 @@ import {AngularFirestoreModule} from '@angular/fire/firestore'
 
 import { AppComponent } from './app.component';
 import { environment } from 'src/environments/environment';
+import { StudentsComponent } from './students/students.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    StudentsComponent
   ],
   imports: [
     BrowserModule,
