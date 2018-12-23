@@ -33,8 +33,13 @@ export class StudentComponent implements OnInit {
   }
 
   onSubmit(form:NgForm) {
-    let data = form.value;
-    this.fireStore.collection('students').add(data);
+    let data = Object.assign({}, form.value);
+    delete data.id
+    if (form.value.id == null) {
+      this.fireStore.collection('students').add(data);
+    } else {
+      this.fireStore.doc("students/" + form.value.id).update(data);
+    }
     this.resetForm(form);
     this.toastr.success("Submitted successfully", "Student Registration");
   }

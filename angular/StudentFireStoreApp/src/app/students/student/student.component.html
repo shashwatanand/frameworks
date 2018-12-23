@@ -1,7 +1,7 @@
 <h2 class="display-4">Student Registration</h2> <br />
 
 <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
-
+  <input type="hidden" name="id" #id="ngModel" [(ngModel)]="service.formData.id" />
   <div class="form-group">
     <input name="studentId" #studentId="ngModel" [(ngModel)]="service.formData.studentId" class="form-control"
       placeholder="Student ID" required>
@@ -11,7 +11,7 @@
   <div class="form-group">
     <input name="fullName" #fullName="ngModel" [(ngModel)]="service.formData.fullName" class="form-control" placeholder="Full Name"
       required>
-      <div *ngIf="fullName.invalid && fullName.touched" class="validation-error">Student Name is required</div>
+    <div *ngIf="fullName.invalid && fullName.touched" class="validation-error">Student Name is required</div>
   </div>
 
   <div class="form-row">
