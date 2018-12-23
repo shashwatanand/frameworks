@@ -41,7 +41,7 @@ export class StudentComponent implements OnInit {
       this.fireStore.doc("students/" + form.value.id).update(data);
     }
     this.resetForm(form);
-    this.toastr.success("Submitted successfully", "Student Registration");
+    this.toastr.success('Submitted successfully', 'Student Registration');
   }
 
 }
