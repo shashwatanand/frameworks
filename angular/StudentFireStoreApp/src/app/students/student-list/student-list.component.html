@@ -1,3 +1,16 @@
-<p>
-  student-list works!
-</p>
+<table class="table table-hover">
+  <thead>
+    <th>Student</th>
+    <th>Department</th>
+    <th>Mobile</th>
+    <th></th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let student of list">
+      <td>{{student.studentId}} - {{student.fullName}}</td>
+      <td>{{student.dept}}</td>
+      <td>{{student.mobile}}</td>
+      <td><a class="btn text-danger"><i class="fa fa-trash"></i></a></td>
+    </tr>
+  </tbody>
+</table>
