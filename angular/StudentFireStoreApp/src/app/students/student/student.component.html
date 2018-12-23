@@ -1,6 +1,6 @@
 <h2 class="display-4">Student Registration</h2> <br />
 
-<form #form="ngForm" autocomplete="off">
+<form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
 
   <div class="form-group">
     <input name="studentId" #studentId="ngModel" [(ngModel)]="service.formData.studentId" class="form-control"
