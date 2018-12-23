@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { StudentService } from 'src/app/shared/student.service';
 import { NgForm } from '@angular/forms';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-student',
@@ -11,7 +12,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
 export class StudentComponent implements OnInit {
 
   constructor(private service : StudentService,
-    private fireStore : AngularFirestore) { }
+    private fireStore : AngularFirestore,
+    private toastr : ToastrService) { }
 
   ngOnInit() {
     this.resetForm();
@@ -34,6 +36,7 @@ export class StudentComponent implements OnInit {
     let data = form.value;
     this.fireStore.collection('students').add(data);
     this.resetForm(form);
+    this.toastr.success("Submitted successfully", "Student Registration");
   }
 
 }
