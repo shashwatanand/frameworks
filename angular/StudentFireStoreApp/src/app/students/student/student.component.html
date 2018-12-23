@@ -1,3 +1,26 @@
-<p>
-  student works!
-</p>
+<h2 class="display-4">Student Registration</h2> <br/>
+
+<form #form="ngForm" autocomplete="off">
+
+  <div class="form-group">
+    <input name="studentId" #studentId="ngModel" [(ngModel)]="service.formData.studentId" class="form-control"
+      placeholder="Student ID">
+  </div>
+
+  <div class="form-group">
+    <input name="fullName" #fullName="ngModel" [(ngModel)]="service.formData.fullName" class="form-control" placeholder="Full Name">
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <input name="dept" #dept="ngModel" [(ngModel)]="service.formData.dept" class="form-control" placeholder="Department">
+    </div>
+    <div class="form-group col-md-6">
+      <input name="mobile" #mobile="ngModel" [(ngModel)]="service.formData.mobile" class="form-control" placeholder="Mobile">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <button type="submit" class="btn btn-lg btn-block btn-info">Submit</button>
+  </div>
+</form>
