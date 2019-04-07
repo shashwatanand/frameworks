@@ -1,6 +1,6 @@
 spring:
   application:
-    name: spring-cloud-eureka-rest-client
+    name: spring-eureka-restclient
 
 server:
   port: 0

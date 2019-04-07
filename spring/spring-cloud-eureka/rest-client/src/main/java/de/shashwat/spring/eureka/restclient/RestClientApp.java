@@ -26,6 +26,7 @@ public class RestClientApp implements GreetController {
 
 	@Override
 	public String greet() {
-		return String.format("Greetings from '%s'!", eurekaClient.getApplication(this.applicationName).getName());
+		String greetStr = String.format("Greetings from '%s'!", eurekaClient.getApplication(this.applicationName).getName());
+		return greetStr;
 	}
 }
