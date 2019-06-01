@@ -46,10 +46,39 @@
                         "FromPort" : "22",
                         "ToPort" : "22",
                         "CidrIp" : "0.0.0.0/0"
+                    },
+                    {
+                        "IpProtocol" : "tcp",
+                        "FromPort" : "2375",
+                        "ToPort" : "2375",
+                        "CidrIp" : "0.0.0.0/0"
+                    }
+                ]
+            }
+        },
+        "DAppRDSNode" : {
+            "Type" : "AWS::RDS::DBInstance",
+            "Properties" : {
+                "DBName" : "appdb",
+                "Engine" : "MySQL",
+                "MasterUsername" : "myrdsuser",
+                "MasterUserPassword" : "myrdsuser",
+                "DBInstanceClass" : "db.t2.micro",
+                "AllocatedStorage" : "5"
+            }
+        },
+        "DAppRDSSG" : {
+            "Type" : "AWS::RDS::DBSecurityGroup",
+            "Properties" : {
+                "GroupDescription": "Security Group for RDS public access",
+                "DBSecurityGroupIngress" : [
+                    {
+                        "CIDRIP" : "0.0.0.0/0"
                     }
                 ]
             }
         }
+        
     },
     "Outputs": {
 
