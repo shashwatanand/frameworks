@@ -21,3 +21,18 @@
 - sudo apt-get update
 - apt-cache policy docker-ce
 - sudo apt-get install -y docker-ce
+
+## Docker commands
+- sudo docker images
+- sudo docker run -it -d ubuntu
+- sudo docker run -it -d -p 80:80 <cont.id>
+   
+   Ex: sudo docker run -it -d -p 80:80 79b30b9bcc02 
+- sudo docker ps
+- sudo docker exec -it <cont.id> bash
+   
+   Ex: sudo docker exec -it 79b30b9bcc02 bash
+- sudo docker kill <cont.id>
+
+   Ex: sudo docker kill 79b30b9bcc02
+
