@@ -1,11 +1,26 @@
 AWSTemplateFormatVersion: 2010-09-09
+Parameters:
+  KeyName:
+    Description: "Name of the existing key pair"
+    Type: AWS::EC2::KeyPair::KeyName
+    ConstraintDescription: Must be name of existing keypair
+  InstanceType:
+    Description: EC2 Instance Type
+    Type: String
+    Default: t2.micro
+    AllowedValues:
+      - t2.micro
+      - t2.small
+    ConstraintDescription: Must be valid instancetype
 Resources:
   DAppNodeEC2Instance:
     Type: AWS::EC2::Instance
     Properties:
-      KeyName: AWS-EC2-Key
+      KeyName:
+        !Ref KeyName
       ImageId: ami-07b4156579ea1d7ba
-      InstanceType: t2.micro
+      InstanceType: 
+        !Ref InstanceType
       Monitoring: false
       SecurityGroupIds:
         - !Ref DAppNodeSG
