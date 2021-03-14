@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "361602834304",
+    "project_id": "shatodo-7d4f1",
+    "storage_bucket": "shatodo-7d4f1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:361602834304:android:c4818c144b8f3f7c90eb65",
+        "android_client_info": {
+          "package_name": "com.example.shatodo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "361602834304-6ua0mf9svlchhksskl2l38bs2vpjqeqj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.shatodo",
+            "certificate_hash": "ecd414f7893b57a6de1620cf49f64a2190900290"
+          }
+        },
+        {
+          "client_id": "361602834304-2h7b2b1bpte9ob26jukt88dsd6i66dnd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAa-lD1GxbkFLICZmxu2KdKAZzpcsa1sKQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "361602834304-2h7b2b1bpte9ob26jukt88dsd6i66dnd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
