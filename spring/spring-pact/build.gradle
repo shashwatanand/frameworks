@@ -2,6 +2,7 @@ plugins {
 	id 'org.springframework.boot' version '2.6.6'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
+	id 'au.com.dius.pact' version '4.2.10'
 }
 
 group = 'in.shashwatanand'
@@ -17,11 +18,36 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	
 	//pact
-	testImplementation 'au.com.dius.pact.consumer:junit5:4.3.6'
-	//testImplementation 'au.com.dius.pact.provider:junit5:4.3.6'
-	//testImplementation 'au.com.dius.pact.provider:junit5spring:4.3.6'
+	testImplementation 'au.com.dius.pact.consumer:junit5:4.2.10'
+	testImplementation 'au.com.dius.pact.provider:junit5:4.2.10'
+	//testImplementation 'au.com.dius.pact.provider:junit5spring:4.1.8'
+	//testImplementation 'au.com.dius.pact.consumer:junit5:4.1.8'
+	//testImplementation 'au.com.dius.pact.provider:junit5:4.1.8'
+	//testImplementation 'au.com.dius.pact.provider:junit5spring:4.1.8'
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+pact {
+	publish {
+		pactBrokerUrl = 'http://localhost:9292/'
+		serviceProviders {
+			'code-provider' {
+				protocol = 'http'
+				port = '9292'
+				hasPactsWith('userExists') {
+           			// Will define a consumer for each pact file in the directory.
+					// Consumer name is read from contents of pact file
+					pactFileLocation = file("$buildDir/pacts/")
+				}
+				hasPactsWith('genJavaCode') {
+           			// Will define a consumer for each pact file in the directory.
+					// Consumer name is read from contents of pact file
+					pactFileLocation = file("$buildDir/pacts/")
+				}
+			}
+		}
+	}
 }
