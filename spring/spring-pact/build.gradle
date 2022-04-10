@@ -36,7 +36,7 @@ pact {
 		serviceProviders {
 			'code-provider' {
 				protocol = 'http'
-				port = '9292'
+				port = '8080'
 				hasPactsWith('userExists') {
            			// Will define a consumer for each pact file in the directory.
 					// Consumer name is read from contents of pact file
