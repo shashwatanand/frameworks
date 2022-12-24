@@ -3,6 +3,7 @@ package in.shahswatanand.usermanagement;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin
 public class UserController {
     @Autowired
     private UserRepository userRepository;
@@ -33,12 +35,13 @@ public class UserController {
         return userRepository.save(user);
     }
 
-    @PutMapping("")
+    @PutMapping("/")
     public User putMethodName(@PathVariable String id, @RequestBody User newUser) {
         User oldUser = userRepository.findById(newUser.getId()).orElse(null);
         oldUser.setFirstName(newUser.getFirstName());
         oldUser.setLastName(newUser.getLastName());
         oldUser.setEmail(newUser.getEmail());
+        userRepository.save(oldUser);
         return oldUser;
     }
 
