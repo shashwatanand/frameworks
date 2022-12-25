@@ -70,25 +70,25 @@ class App extends React.Component {
         <div className='row'>
           <div className='col s6'>
             <form onSubmit={(e) => this.submit(e, this.state.id)}>
-              <div className='col s16'>
+              <div className="input-field col s12">
                 <i className="material-icons prefix">person</i>
                 <input value={this.state.firstName} onChange={(e) => this.setState({firstName:e.target.value})} type="text" id="autocomplete-input" className="autocomplete" />
                 <label htmlFor="autocomplete-input">Enter First Name</label>
               </div>
-              <div className='col s16'>
+              <div className="input-field col s12">
                 <i className="material-icons prefix">person</i>
                 <input value={this.state.lastName} onChange={(e) => this.setState({lastName:e.target.value})} type="text" id="autocomplete-input" className="autocomplete" />
                 <label htmlFor="autocomplete-input">Enter Last Name</label>
               </div>
-              <div className='col s16'>
+              <div className="input-field col s12">
                 <i className="material-icons prefix">mail</i>
                 <input  value={this.state.email} onChange={(e) => this.setState({email:e.target.value})} type="email" id="autocomplete-input" className="autocomplete" />
                 <label htmlFor="autocomplete-input">Enter Email</label>
               </div>
+              <button className="btn waves-effect waves-light right" type="submit" name="action">Submit
+                <i className="material-icons right">send</i>
+              </button>
             </form>
-            <button className="btn waves-effect waves-light right" type="submit" name="action">Submit
-              <i className="material-icons right">send</i>
-            </button>
           </div>
           <div className='col s6'>
             <table>
