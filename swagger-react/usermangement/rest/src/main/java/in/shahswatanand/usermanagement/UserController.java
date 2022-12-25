@@ -36,7 +36,7 @@ public class UserController {
     }
 
     @PutMapping("/")
-    public User putMethodName(@PathVariable String id, @RequestBody User newUser) {
+    public User putMethodName(@RequestBody User newUser) {
         User oldUser = userRepository.findById(newUser.getId()).orElse(null);
         oldUser.setFirstName(newUser.getFirstName());
         oldUser.setLastName(newUser.getLastName());
