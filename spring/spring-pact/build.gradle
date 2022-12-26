@@ -3,6 +3,16 @@ plugins {
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
 	id 'au.com.dius.pact' version '4.2.10'
+	// Checker Framework pluggable type-checking
+    id 'org.checkerframework' version '0.6.13'
+}
+
+
+checkerFramework {
+  checkers = [
+    'org.checkerframework.checker.nullness.NullnessChecker'
+    //'org.checkerframework.checker.units.UnitsChecker'
+  ]
 }
 
 group = 'in.shashwatanand'
@@ -24,6 +34,10 @@ dependencies {
 	//testImplementation 'au.com.dius.pact.consumer:junit5:4.1.8'
 	//testImplementation 'au.com.dius.pact.provider:junit5:4.1.8'
 	//testImplementation 'au.com.dius.pact.provider:junit5spring:4.1.8'
+	
+	//compileOnly 'org.checkerframework:checker-qual:3.4.0'
+	//testCompileOnly 'org.checkerframework:checker-qual:3.4.0'
+	//checkerFramework 'org.checkerframework:checker:3.4.0'
 }
 
 tasks.named('test') {
@@ -37,16 +51,16 @@ pact {
 			'code-provider' {
 				protocol = 'http'
 				port = '8080'
-				hasPactsWith('userExists') {
+				//hasPactsWith('userExists') {
            			// Will define a consumer for each pact file in the directory.
 					// Consumer name is read from contents of pact file
-					pactFileLocation = file("$buildDir/pacts/")
-				}
-				hasPactsWith('genJavaCode') {
+					//pactFileLocation = file("$buildDir/pacts/")
+				//}
+				//hasPactsWith('genJavaCode') {
            			// Will define a consumer for each pact file in the directory.
 					// Consumer name is read from contents of pact file
-					pactFileLocation = file("$buildDir/pacts/")
-				}
+					//pactFileLocation = file("$buildDir/pacts/")
+				//}
 			}
 		}
 	}

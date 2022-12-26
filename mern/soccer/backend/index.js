@@ -1,6 +1,8 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
+import cors from 'cors';
+import routes from './routes/soccerRoutes';
 
 const app = express();
 const PORT = 3001;
@@ -16,6 +18,10 @@ mongoose.connect('mongodb://localhost:27017/soccerDB', {
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use(bodyParser.json());
 
+// CORS setup
+app.use(cors());
+
+routes(app);
 
 app.get('/', (req, res) => 
     res.send(`Our soccer application is running on PORT ${PORT}`)
