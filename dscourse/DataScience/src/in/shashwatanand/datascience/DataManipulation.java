@@ -3,6 +3,7 @@ package in.shashwatanand.datascience;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class DataManipulation {
 	protected static class Employee {
@@ -45,5 +46,69 @@ public class DataManipulation {
                 new Employee("Nancy", 29, "developer", 75000f),
         };
         List<Employee> employees = new ArrayList<>(Arrays.asList(employeesArr));
+        
+        // Map Examples
+        List<Integer> doubleNumbers = numbers.stream()
+        		.map((n) -> n * 2)
+        		.collect(Collectors.toList());
+        System.out.println(doubleNumbers);
+        
+        List<String> uppercasedWords = words.stream()
+        		.map((word) -> word.toUpperCase())
+        		.collect(Collectors.toList());
+        System.out.println(uppercasedWords);
+        
+        List<String> employeeNames = employees.stream()
+        		.map((employee) -> employee.name)
+        		.collect(Collectors.toList());
+        System.out.println(employeeNames);
+        
+        // Filter Examples
+        List<String> longWords = words.stream()
+        		.filter((word) -> word.length() > 4)
+        		.collect(Collectors.toList());
+        System.out.println(longWords);
+        
+        List<Employee> wellPaidEmployees = employees.stream()
+        		.filter((employee) -> employee.salary > 60000f)
+        		.collect(Collectors.toList());
+        System.out.println(wellPaidEmployees);
+        
+        List<String> wellPaidEmployeeJobTitle = employees.stream()
+        		.filter((employee) -> employee.salary > 60000f)
+        		.map((employee) -> employee.jobTitle)
+        		.collect(Collectors.toList());
+        System.out.println(wellPaidEmployeeJobTitle);
+        
+        String wellPaidEmployeeJobTitles = employees.stream()
+        		.filter((employee) -> employee.salary > 60000f)
+        		.map((employee) -> employee.jobTitle)
+        		.collect(Collectors.joining(", "));
+        System.out.println(wellPaidEmployeeJobTitles);
+        
+        Long howManyWellPaidEmployees = employees.stream()
+        		.filter((employee) -> employee.salary > 60000f)
+        		.collect(Collectors.counting());
+        System.out.println(howManyWellPaidEmployees);
+        
+        // Sorting
+        
+        List<Employee> sortedEmployeesOnSalary = employees.stream()
+        		.sorted((e1, e2) -> e1.salary.compareTo(e2.salary))
+        		.collect(Collectors.toList());
+        System.out.println(sortedEmployeesOnSalary);
+        
+        List<String> sortedEmployeesNameOnSalary = employees.stream()
+        		.sorted((e1, e2) -> e1.salary.compareTo(e2.salary))
+        		.map((employee) -> employee.name)
+        		.collect(Collectors.toList());
+        System.out.println(sortedEmployeesNameOnSalary);
+        
+        List<String> sortedEmployeeNamesOver30OnSalary = employees.stream()
+        		.filter((employee) -> employee.age > 30)
+        		.sorted((e1, e2) -> e1.salary.compareTo(e2.salary))
+        		.map((employee) -> employee.name)
+        		.collect(Collectors.toList());
+        System.out.println(sortedEmployeeNamesOver30OnSalary);
     }
 }
