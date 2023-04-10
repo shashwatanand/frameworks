@@ -7,7 +7,6 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.ScatterChart;
-import javafx.scene.chart.XYChart;
 import javafx.scene.chart.XYChart.Data;
 import javafx.scene.chart.XYChart.Series;
 import javafx.stage.Stage;
@@ -24,13 +23,24 @@ public class ScatterPlotApp extends Application {
 				.map((line) -> CarRecordUtil.parseCar(line))
 				.collect(Collectors.toList());
 		
-		List<Float> xValues = cars.stream()
-				.map((car) -> car.weight)
+		Series olderCarSeries = new Series();
+		Series newerCarSeries = new Series();
+		
+		List<CarRecord> olderCars = cars.stream()
+				.filter((car) -> car.year <= 76)
+				.collect(Collectors.toList());
+
+		List<CarRecord> newerCars = cars.stream()
+				.filter((car) -> car.year > 76)
 				.collect(Collectors.toList());
 		
-		List<Float> yValues = cars.stream()
-				.map((car) -> car.mpg)
-				.collect(Collectors.toList());
+		olderCars.forEach((car) -> {
+			olderCarSeries.getData().add(new Data(car.weight, car.mpg));
+		});
+		
+		newerCars.forEach((car) -> {
+			newerCarSeries.getData().add(new Data(car.weight, car.mpg));
+		});
 		
 		NumberAxis xAxis = new NumberAxis();
 		NumberAxis yAxis = new NumberAxis();
@@ -38,19 +48,15 @@ public class ScatterPlotApp extends Application {
 		yAxis.setLabel("MPG");
 		
 		ScatterChart<Number, Number> scatterChart = new ScatterChart<>(xAxis, yAxis);
-		Series dataPointSeries = new Series();
-		for (int i = 0; i < cars.size(); i++) {
-			Data newDataPoint = new Data(xValues.get(i), yValues.get(i));
-			dataPointSeries.getData().add(newDataPoint);
-		}
+		scatterChart.getData().add(olderCarSeries);
+		scatterChart.getData().add(newerCarSeries);
 		
-		scatterChart.getData().add(dataPointSeries);
 		scatterChart.setTitle("Weight vs Mileage");
 		scatterChart.setHorizontalGridLinesVisible(false);
 		scatterChart.setVerticalGridLinesVisible(false);
 		scatterChart.setHorizontalZeroLineVisible(false);
 		
-		Scene scene = new Scene(scatterChart, 400, 600);
+		Scene scene = new Scene(scatterChart, 600, 700);
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}

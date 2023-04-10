@@ -13,8 +13,9 @@ public class CarRecordUtil {
 			Integer numberOfCylinders = Integer.parseInt(fields.get(1).trim());
 			Float displacement = Float.parseFloat(fields.get(2).trim());
 			Float weight = Float.parseFloat(fields.get(4).trim());
+			Integer year = Integer.parseInt(fields.get(6).trim());
 
-			return new CarRecord(mpg, numberOfCylinders, displacement, weight);
+			return new CarRecord(mpg, numberOfCylinders, displacement, weight, year);
 		} catch (Exception e) {
 			System.out.println("Exception : " + e.getMessage());
 			return null;
