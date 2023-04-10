@@ -7,6 +7,36 @@ import org.apache.commons.math3.linear.Array2DRowRealMatrix;
 import org.apache.commons.math3.linear.RealMatrix;
 
 public class DataFormatting {
+	private static class Person {
+		private final Integer id;
+		private final String name;
+		private final Boolean likesPizza;
+		
+		public Person(Integer id, String name, Boolean likesPizza) {
+			super();
+			this.id = id;
+			this.name = name;
+			this.likesPizza = likesPizza;
+		}
+
+		public Integer getId() {
+			return id;
+		}
+
+		public String getName() {
+			return name;
+		}
+
+		public Boolean getLikesPizza() {
+			return likesPizza;
+		}
+	}
+	
+	private static class PersonUtils {
+		public static String getFirstName(Person person) {
+			return person.getName().split(" ")[0];
+		}
+	}
 	
 	public static void main(String[] args) {
 		// Univariate arrays
