@@ -21,4 +21,12 @@ public class CarRecordUtil {
 			return null;
 		}
 	}
+
+	public static Float getAvergeMpg(List<CarRecord> cars) {
+		Float sum = 0f;
+		for (CarRecord carRecord : cars) {
+			sum += carRecord.mpg;
+		}
+		return sum / cars.size();
+	}
 }
