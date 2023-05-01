@@ -1,0 +1,16 @@
+package in.shashwatanand.datascience.knn;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+import in.shashwatanand.datascience.TextLoader;
+
+public class KNNExample {
+	public static void main(String[] args) {
+		List<String> lines = TextLoader.getLines("iris.data");
+		List<FlowerRecord> flowers = lines.stream()
+				.map((line) -> FlowerRecordUtil.parseFlower(line))
+				.collect(Collectors.toList());
+		flowers.forEach(System.out::println);		
+	}
+}
