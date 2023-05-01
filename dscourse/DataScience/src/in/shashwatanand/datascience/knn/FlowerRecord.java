@@ -1,6 +1,9 @@
 package in.shashwatanand.datascience.knn;
 
-public class FlowerRecord {
+import java.util.Arrays;
+import java.util.List;
+
+public class FlowerRecord implements DataItem {
 	public final Double sepalLength;
 	public final Double sepalWidth;
 	public final Double petalLength;
@@ -20,5 +23,15 @@ public class FlowerRecord {
 	public String toString() {
 		return "FlowerRecord [sepalLength=" + sepalLength + ", sepalWidth=" + sepalWidth + ", petalLength="
 				+ petalLength + ", petalWidth=" + petalWidth + ", species=" + species + "]";
+	}
+
+	@Override
+	public List<Double> getCoordinates() {
+		return Arrays.asList(this.sepalLength, this.sepalWidth, this.petalLength, this.petalWidth);
+	}
+
+	@Override
+	public String getClassifier() {
+		return this.species;
 	}
 }
