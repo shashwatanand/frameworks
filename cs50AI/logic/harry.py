@@ -15,3 +15,5 @@ kownledge = And(
 )
 
 print(kownledge.formula())
+
+print(model_check(kownledge, rain))
