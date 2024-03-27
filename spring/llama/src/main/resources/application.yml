@@ -1,0 +1,5 @@
+Spring:
+  application:
+    name: llama
+  profiles:
+    active: dev
