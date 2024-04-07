@@ -3,3 +3,12 @@ Spring:
     name: llama
   profiles:
     active: dev
+  threads:
+    virtual:
+      enabled: true
+  ai:
+    ollama:
+      base-url: http://localhost:11434/
+      chat:
+        options:
+          model: mistral

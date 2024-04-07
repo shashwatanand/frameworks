@@ -8,3 +8,11 @@ services:
       - 'POSTGRES_USER=shashwat'
     ports:
       - '5432:5432'
+  ollama:
+    hostname: ollama
+    container_name: ollama
+    image: ollama/ollama
+    ports:
+      - "11434:11434"
+
+  # Need to execure this : docker exec -it ollama ollama run mistral
